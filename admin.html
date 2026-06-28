@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin · AMB'26 Cangas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="crest">AMB'2026 · Panel admin</div>
+    <h1>Resultados · CV Cangas Onís</h1>
+    <div class="sub"><a href="index.html">← Ver público</a></div>
+  </div>
+</header>
+
+<div class="settings-toggle" id="settingsToggle">⚙ ajustes de GitHub</div>
+<div id="settingsPanel" class="admin-card" style="display:none">
+  <h3>Conexión con el repositorio</h3>
+  <div class="field-row">
+    <div style="flex:1"><label>Owner (usuario GitHub)</label><input type="text" id="ghOwner" placeholder="danielvega80"></div>
+    <div style="flex:1"><label>Repo</label><input type="text" id="ghRepo" placeholder="AMB26"></div>
+  </div>
+  <div class="field-row">
+    <div style="flex:1"><label>Branch</label><input type="text" id="ghBranch" placeholder="main" value="main"></div>
+    <div style="flex:2"><label>Personal Access Token (repo scope)</label><input type="password" id="ghToken" placeholder="ghp_..."></div>
+  </div>
+  <button class="primary small" id="saveSettings">Guardar ajustes (este navegador)</button>
+  <div style="font-size:11px;color:var(--chalk-dim);margin-top:8px">
+    El token solo se guarda en este navegador (localStorage), no se sube a ningún sitio. Crea uno en
+    GitHub → Settings → Developer settings → Personal access tokens (classic, scope "repo").
+  </div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div id="statusArea"></div>
+<div id="content"></div>
+
+<div style="position:sticky;bottom:0;padding:12px 14px;background:linear-gradient(180deg, transparent, var(--court-deep) 30%);display:flex;gap:8px;">
+  <button class="primary" id="publishBtn" style="flex:1">Publicar cambios en GitHub</button>
+</div>
+
+<script src="app.js"></script>
+<script>
+let DATA = null;
+let activeCat = null;
+
+function getSettings(){
+  return {
+    owner: localStorage.getItem('amb26_owner') || '',
+    repo: localStorage.getItem('amb26_repo') || '',
+    branch: localStorage.getItem('amb26_branch') || 'main',
+    token: localStorage.getItem('amb26_token') || ''
+  };
+}
+function saveSettings(){
+  localStorage.setItem('amb26_owner', document.getElementById('ghOwner').value.trim());
+  localStorage.setItem('amb26_repo', document.getElementById('ghRepo').value.trim());
+  localStorage.setItem('amb26_branch', document.getElementById('ghBranch').value.trim() || 'main');
+  localStorage.setItem('amb26_token', document.getElementById('ghToken').value.trim());
+  showStatus('Ajustes guardados en este navegador.', 'ok');
+}
+function fillSettingsForm(){
+  const s = getSettings();
+  document.getElementById('ghOwner').value = s.owner;
+  document.getElementById('ghRepo').value = s.repo;
+  document.getElementById('ghBranch').value = s.branch;
+  document.getElementById('ghToken').value = s.token;
+}
+
+document.getElementById('settingsToggle').onclick = ()=>{
+  const p = document.getElementById('settingsPanel');
+  p.style.display = p.style.display==='none' ? 'block' : 'none';
+};
+document.getElementById('saveSettings').onclick = saveSettings;
+
+function showStatus(msg, kind){
+  const area = document.getElementById('statusArea');
+  area.innerHTML = `<div class="status-msg ${kind}">${msg}</div>`;
+  if(kind==='ok') setTimeout(()=>{ area.innerHTML=''; }, 4000);
+}
+
+function utf8ToB64(str){
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+async function publishToGitHub(){
+  const s = getSettings();
+  if(!s.owner || !s.repo || !s.token){
+    showStatus('Faltan los ajustes de GitHub (owner / repo / token). Abre "⚙ ajustes".', 'err');
+    return;
+  }
+  const path = 'data/results.json';
+  const apiBase = `https://api.github.com/repos/${s.owner}/${s.repo}/contents/${path}`;
+  showStatus('Publicando...', 'ok');
+  try{
+    const getRes = await fetch(`${apiBase}?ref=${s.branch}`, {
+      headers: { 'Authorization': `token ${s.token}`, 'Accept':'application/vnd.github+json' }
+    });
+    let sha = undefined;
+    if(getRes.ok){
+      const j = await getRes.json();
+      sha = j.sha;
+    } else if(getRes.status !== 404){
+      const t = await getRes.text();
+      throw new Error('GET ' + getRes.status + ': ' + t);
+    }
+    const content = utf8ToB64(JSON.stringify(DATA.results, null, 2));
+    const body = {
+      message: 'Actualiza resultados AMB26 - ' + new Date().toISOString(),
+      content, branch: s.branch
+    };
+    if(sha) body.sha = sha;
+    const putRes = await fetch(apiBase, {
+      method: 'PUT',
+      headers: { 'Authorization': `token ${s.token}`, 'Accept':'application/vnd.github+json', 'Content-Type':'application/json' },
+      body: JSON.stringify(body)
+    });
+    if(!putRes.ok){
+      const t = await putRes.text();
+      throw new Error('PUT ' + putRes.status + ': ' + t);
+    }
+    showStatus('Publicado ✓ Los resultados ya están en GitHub Pages (puede tardar ~1 min en propagarse).', 'ok');
+  }catch(e){
+    showStatus('Error publicando: ' + e.message, 'err');
+  }
+}
+document.getElementById('publishBtn').onclick = publishToGitHub;
+
+function renderTabs(){
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  DATA.schedule.categories.forEach(cat=>{
+    const b = document.createElement('button');
+    b.className = 'tab' + (cat.id===activeCat ? ' active' : '');
+    b.textContent = cat.shortName;
+    b.onclick = ()=>{ activeCat = cat.id; render(); };
+    tabs.appendChild(b);
+  });
+}
+
+function setInputsHTML(matchId, sets){
+  let html = '<div class="field-row">';
+  for(let i=0;i<5;i++){
+    const pair = sets[i] || [null,null];
+    html += `<div class="set-group">
+      <span style="font-size:10px;color:var(--chalk-dim)">S${i+1}</span>
+      <input type="number" min="0" max="99" class="set-input" data-m="${matchId}" data-set="${i}" data-side="a" value="${pair[0]??''}">
+      <span style="color:var(--chalk-dim)">-</span>
+      <input type="number" min="0" max="99" class="set-input" data-m="${matchId}" data-set="${i}" data-side="b" value="${pair[1]??''}">
+    </div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function ensureResult(matchId){
+  if(!DATA.results.results[matchId]) DATA.results.results[matchId] = { sets: [] };
+  return DATA.results.results[matchId];
+}
+
+function onSetInputChange(e){
+  const t = e.target;
+  const matchId = t.dataset.m;
+  const setIdx = parseInt(t.dataset.set);
+  const side = t.dataset.side;
+  const r = ensureResult(matchId);
+  while(r.sets.length <= setIdx) r.sets.push([null,null]);
+  const v = t.value === '' ? null : parseInt(t.value);
+  r.sets[setIdx][side==='a'?0:1] = v;
+}
+
+function renderMatches(cat){
+  const extra = (DATA.results.extraMatches[cat.id] = DATA.results.extraMatches[cat.id] || []);
+  const matches = cat.matches.concat(extra);
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  matches.forEach(mt=>{
+    const r = DATA.results.results[mt.id] || { sets: [] };
+    const card = document.createElement('div');
+    card.className = 'admin-card' + (mt.cangas ? ' cangas' : '');
+    card.innerHTML = `
+      <h3>${mt.teamA} <span style="color:var(--chalk-dim)">vs</span> ${mt.teamB}</h3>
+      <div style="font-size:11px;color:var(--chalk-dim);margin-bottom:8px">${fmtDate(mt.date)} · ${mt.time||'hora s/c'} · ${mt.venue||''}</div>
+      ${setInputsHTML(mt.id, r.sets)}
+    `;
+    content.appendChild(card);
+  });
+  content.querySelectorAll('.set-input').forEach(inp=>{
+    inp.addEventListener('change', onSetInputChange);
+  });
+
+  // add-extra-match form
+  const addCard = document.createElement('div');
+  addCard.className = 'admin-card';
+  addCard.innerHTML = `
+    <h3>+ Añadir partido (2ª fase / playoffs)</h3>
+    <div class="field-row">
+      <div style="flex:1"><label>Equipo A</label><input type="text" id="newA"></div>
+      <div style="flex:1"><label>Equipo B</label><input type="text" id="newB"></div>
+    </div>
+    <div class="field-row">
+      <div style="flex:1"><label>Fecha (AAAA-MM-DD)</label><input type="text" id="newDate" placeholder="2026-07-07"></div>
+      <div style="flex:1"><label>Hora</label><input type="text" id="newTime" placeholder="10:10"></div>
+      <div style="flex:1"><label>Campo</label><input type="text" id="newVenue"></div>
+    </div>
+    <button class="ghost small" id="addMatchBtn">Añadir</button>
+  `;
+  content.appendChild(addCard);
+  document.getElementById('addMatchBtn').onclick = ()=>{
+    const a = document.getElementById('newA').value.trim();
+    const b = document.getElementById('newB').value.trim();
+    if(!a||!b){ showStatus('Pon los dos equipos.', 'err'); return; }
+    const id = 'x' + Date.now();
+    extra.push({
+      id, jor: 0,
+      date: document.getElementById('newDate').value.trim(),
+      time: document.getElementById('newTime').value.trim(),
+      teamA: a, teamB: b,
+      venue: document.getElementById('newVenue').value.trim(),
+      cangas: a===CANGAS || b===CANGAS
+    });
+    renderMatches(cat);
+    showStatus('Partido añadido (recuerda publicar para guardarlo).', 'ok');
+  };
+}
+
+function render(){
+  const cat = DATA.schedule.categories.find(c=>c.id===activeCat) || DATA.schedule.categories[0];
+  activeCat = cat.id;
+  renderTabs();
+  renderMatches(cat);
+}
+
+fillSettingsForm();
+loadAll().then(d=>{ DATA = d; render(); })
+  .catch(e=>{
+    document.getElementById('content').innerHTML =
+      `<div class="empty-state">Error cargando datos: ${e.message}</div>`;
+  });
+</script>
+</body>
+</html>

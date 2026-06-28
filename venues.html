@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pabellones · AMB'26</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="crest">AMB'2026 · Espinho, Portugal</div>
+    <h1>Pabellones</h1>
+    <div class="sub"><a href="index.html">← Volver al calendario</a></div>
+  </div>
+</header>
+<div id="list"></div>
+<script src="app.js"></script>
+<script>
+loadJSON("data/venues.json").then(venues=>{
+  const list = document.getElementById('list');
+  Object.entries(venues).forEach(([key, v])=>{
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${v.lat},${v.lng}`;
+    const card = document.createElement('div');
+    card.className = 'match-card' + (key==='ALOJAMIENTO' ? ' cangas' : '');
+    let busLine = '';
+    if(v.busStop){
+      const busUrl = `https://www.google.com/maps/search/?api=1&query=${v.busStop.lat},${v.busStop.lng}`;
+      busLine = `<div class="sets-line">🚌 <a href="${busUrl}" target="_blank" rel="noopener">${v.busStop.name} ↗</a></div>`;
+    }
+    card.innerHTML = `
+      <div class="match-teams"><span class="team${key==='ALOJAMIENTO'?' is-cangas':''}">${v.name}</span></div>
+      <div class="sets-line">${v.address}</div>
+      ${v.campos ? `<div class="sets-line">Campos: ${v.campos}</div>` : ''}
+      ${busLine}
+      <div style="margin-top:6px"><a href="${mapsUrl}" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></div>
+    `;
+    list.appendChild(card);
+  });
+}).catch(e=>{
+  document.getElementById('list').innerHTML = `<div class="empty-state">Error: ${e.message}</div>`;
+});
+</script>
+</body>
+</html>

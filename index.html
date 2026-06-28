@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AMB'26 · CV Cangas Onís</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="crest">AMB'2026 · Espinho, Portugal · 3–9 jul</div>
+    <h1>CV Cangas Onís</h1>
+    <div class="sub">Seguimiento de los 4 equipos del club en el torneo</div>
+    <div id="stayLine" class="sub" style="margin-top:6px"></div>
+  </div>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="toggle-row wrap">
+  <label><input type="checkbox" id="onlyCangas" checked> Solo partidos de Cangas</label>
+  <span><a href="venues.html">Pabellones</a> · <a href="admin.html">Admin →</a></span>
+</div>
+
+<div class="group-chips" id="chips"></div>
+
+<div id="content"></div>
+
+<footer class="foot">datos: cuadros oficiales AMB'2026 · resultados: panel admin</footer>
+
+<script src="app.js"></script>
+<script>
+let DATA = null;
+let activeCat = null;
+
+function renderTabs(){
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  DATA.schedule.categories.forEach(cat=>{
+    const b = document.createElement('button');
+    b.className = 'tab' + (cat.id===activeCat ? ' active' : '');
+    b.textContent = cat.shortName;
+    b.onclick = ()=>{ activeCat = cat.id; render(); };
+    tabs.appendChild(b);
+  });
+}
+
+function renderChips(cat){
+  const chips = document.getElementById('chips');
+  chips.innerHTML = '';
+  cat.teams.forEach(t=>{
+    const c = document.createElement('span');
+    c.className = 'chip' + (t===CANGAS ? ' cangas' : '');
+    c.textContent = t;
+    chips.appendChild(c);
+  });
+}
+
+function scoreHTML(res){
+  if(!res || !res.sets || !res.sets.length){
+    return '<span class="pending">por jugar</span>';
+  }
+  const sum = setsSummary(res.sets);
+  const setsStr = res.sets.map(([a,b])=> (a==null?'':a) + '-' + (b==null?'':b)).join(' · ');
+  let scoreSpan = `<span>${sum.setsA}-${sum.setsB}</span>`;
+  return `<div class="score">${scoreSpan}</div><div class="sets-line">${setsStr}</div>`;
+}
+
+function renderMatches(cat){
+  const onlyCangas = document.getElementById('onlyCangas').checked;
+  const extra = (DATA.results.extraMatches && DATA.results.extraMatches[cat.id]) || [];
+  let matches = cat.matches.concat(extra);
+  if(onlyCangas) matches = matches.filter(m=>m.cangas);
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  if(!matches.length){
+    content.innerHTML = '<div class="empty-state">No hay partidos que mostrar.</div>';
+    return;
+  }
+  groupByDate(matches).forEach(day=>{
+    const lbl = document.createElement('div');
+    lbl.className = 'day-label';
+    lbl.textContent = fmtDate(day.date);
+    content.appendChild(lbl);
+    day.matches.forEach(mt=>{
+      const res = matchResult(mt.id, DATA.results);
+      const card = document.createElement('div');
+      card.className = 'match-card' + (mt.cangas ? ' cangas' : '');
+      const sum = setsSummary(res ? res.sets : null);
+      const aCls = (mt.teamA===CANGAS?'is-cangas ':'') ;
+      const bCls = (mt.teamB===CANGAS?'is-cangas ':'') ;
+      card.innerHTML = `
+        <div class="match-meta"><span>${mt.time||'hora s/c'} · Jor ${mt.jor||'-'}</span><span>${venueLineHTML(mt, DATA.venues)}</span></div>
+        <div class="match-teams">
+          <span class="team ${aCls}">${mt.teamA}</span>
+          <span class="vs">vs</span>
+          <span class="team ${bCls}" style="text-align:right">${mt.teamB}</span>
+        </div>
+        <div style="margin-top:6px">${scoreHTML(res)}</div>
+      `;
+      content.appendChild(card);
+    });
+  });
+}
+
+function render(){
+  const cat = DATA.schedule.categories.find(c=>c.id===activeCat) || DATA.schedule.categories[0];
+  activeCat = cat.id;
+  renderTabs();
+  renderChips(cat);
+  renderMatches(cat);
+}
+
+document.getElementById('onlyCangas').addEventListener('change', render);
+
+loadAll().then(d=>{
+  DATA = d;
+  render();
+  const stay = DATA.venues.ALOJAMIENTO;
+  if(stay){
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${stay.lat},${stay.lng}`;
+    const busUrl = stay.busStop ? `https://www.google.com/maps/search/?api=1&query=${stay.busStop.lat},${stay.busStop.lng}` : null;
+    document.getElementById('stayLine').innerHTML =
+      `🏠 <a href="${mapsUrl}" target="_blank" rel="noopener">${stay.name} ↗</a>` +
+      (busUrl ? ` · 🚌 <a href="${busUrl}" target="_blank" rel="noopener">parada del bus AMB ↗</a>` : '');
+  }
+})
+  .catch(e=>{
+    document.getElementById('content').innerHTML =
+      `<div class="empty-state">Error cargando datos: ${e.message}</div>`;
+  });
+</script>
+</body>
+</html>
