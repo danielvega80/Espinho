@@ -1,0 +1,154 @@
+{
+  "NAVE": {
+    "name": "Nave de Espinho",
+    "address": "Rua da Nave, Espinho",
+    "lat": 41.000605,
+    "lng": -8.622084,
+    "campos": "1 a 13"
+  },
+  "ANTA": {
+    "name": "Pav. Napoleão Guerra - Anta",
+    "address": "Rua da Mina 59, 4500-704 Espinho",
+    "lat": 41.004444,
+    "lng": -8.604153,
+    "campos": "14-15-16"
+  },
+  "AAE": {
+    "name": "Associação Académica de Espinho",
+    "address": "Rua 20, Espinho (frente ao Cemitério)",
+    "lat": 41.013736,
+    "lng": -8.639774,
+    "campos": "17-18"
+  },
+  "REG_ENG": {
+    "name": "Regimento de Engenharia de Espinho",
+    "address": "Rua do Quartel, Espinho",
+    "lat": 40.975616,
+    "lng": -8.639462,
+    "campos": "19-20-21"
+  },
+  "LUSOVENO": {
+    "name": "Pavilhão Luso Venezuelano",
+    "address": "Rua Venezuela, Lugar Portela - Nogueira da Regedoura",
+    "lat": 41.012314,
+    "lng": -8.588144,
+    "campos": "22-23-24"
+  },
+  "GRIB": {
+    "name": "GRIB - Paços de Brandão",
+    "address": "R. 2, Urbanização Quinta Cerrado 139, Paços de Brandão",
+    "lat": 40.972285,
+    "lng": -8.593357,
+    "campos": "25-26-27-28"
+  },
+  "EGC": {
+    "name": "Pav. Esmoriz Ginásio Clube (EGC + EGC Exterior)",
+    "address": "Av. Dr. Fernando Raimundo Rodrigues, Esmoriz",
+    "lat": 40.956893,
+    "lng": -8.643359,
+    "campos": "29-30-31-32 (+ ext. 33-34)"
+  },
+  "ES_ESMORIZ": {
+    "name": "Escola Secundária de Esmoriz",
+    "address": "Rua da Casela 372, 3885-451 Esmoriz",
+    "lat": 40.964999,
+    "lng": -8.621831,
+    "campos": "35-36-37"
+  },
+  "MACEDA": {
+    "name": "Pavilhão Municipal de Maceda",
+    "address": "R. do Corgo, Maceda",
+    "lat": 40.938496,
+    "lng": -8.59954,
+    "campos": "38-39-40"
+  },
+  "CORTEGACA": {
+    "name": "Pavilhão Municipal de Cortegaça",
+    "address": "R. do Buçaquinho, Cortegaça",
+    "lat": 40.943063,
+    "lng": -8.640902,
+    "campos": "41-42-43"
+  },
+  "FIAES": {
+    "name": "Pavilhão de Fiães",
+    "address": "Rua Bolhão, Fiães",
+    "lat": 40.997044,
+    "lng": -8.531936,
+    "campos": "44-45-46"
+  },
+  "MOZELOS": {
+    "name": "Pavilhão de Mozelos",
+    "address": "Tv. José Santos Cardoso 285, 4535 Mozelos",
+    "lat": 40.992482,
+    "lng": -8.565598,
+    "campos": "47-48-49"
+  },
+  "SJ_VER": {
+    "name": "Pavilhão de São João de Ver",
+    "address": "Av. Dr. Francisco Sá Carneiro, São João de Ver",
+    "lat": 40.956974,
+    "lng": -8.556563,
+    "campos": "50-51-52"
+  },
+  "ESAOF": {
+    "name": "ES Arquitecto Oliveira Ferreira",
+    "address": "R. Vilares, 4406-801 São Félix da Marinha",
+    "lat": 41.044077,
+    "lng": -8.633148,
+    "campos": "53-54"
+  },
+  "ES_CANELAS": {
+    "name": "Escola Secundária de Canelas",
+    "address": "R. Delfim Lima, Apartado 512, Canelas, V.N. Gaia",
+    "lat": 41.078287,
+    "lng": -8.602199,
+    "campos": "55-56-57"
+  },
+  "GRIJO": {
+    "name": "Pavilhão Municipal de Grijó",
+    "address": "Rua Prof. Santos Júnior, Grijó",
+    "lat": 41.028023,
+    "lng": -8.587709,
+    "campos": "61-62-63"
+  },
+  "ES_CARVALHOS": {
+    "name": "Escola Secundária de Carvalhos",
+    "address": "R. Eng. Domingos Oliveira 3, 4415-136 Pedroso",
+    "lat": 41.067385,
+    "lng": -8.578489,
+    "campos": "64-65-66"
+  },
+  "EB_CARVALHOS": {
+    "name": "Escola Básica de Carvalhos",
+    "address": "R. Cruz de Carrais 79, 4415-207 Pedroso",
+    "lat": 41.069811,
+    "lng": -8.571228,
+    "campos": "67-68-69"
+  },
+  "COL_CLARET": {
+    "name": "Colégio Claret - Carvalhos",
+    "address": "R. Padrão 83, 4415-284 Pedroso",
+    "lat": 41.067803,
+    "lng": -8.575157,
+    "campos": "70-71-72"
+  },
+  "COL_CARVALHOS": {
+    "name": "Colégio dos Carvalhos",
+    "address": "R. Moeiro s/n, 4415-133 Pedroso",
+    "lat": 41.065164,
+    "lng": -8.575587,
+    "campos": "73-74"
+  },
+  "ALOJAMIENTO": {
+    "name": "EB Domingos Capela (alojamiento CV Cangas Onís)",
+    "address": "Rua D. Dinis, 4501-643 Espinho",
+    "lat": 40.99391,
+    "lng": -8.630325,
+    "campos": null,
+    "busStop": {
+      "name": "Paragem AMB: N109, 832-962",
+      "lat": 40.993487,
+      "lng": -8.6312
+    }
+  }
+}

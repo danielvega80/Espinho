@@ -1,1 +1,733 @@
-
+{
+  "tournament": "AMB'2026",
+  "club": "Club Voleibol Cangas de Onís",
+  "venueCity": "Espinho, Portugal",
+  "dates": "3–9 julio 2026",
+  "generatedNote": "1ª fase completa por categoría. La 2ª fase y siguientes dependen de la clasificación final y se añaden a mano desde el panel de admin cuando se confirmen.",
+  "categories": [
+    {
+      "id": "masc-inf-ini",
+      "shortName": "Infantil/Iniciado Masc.",
+      "fullName": "Infantil/Iniciado Masculino (U-14/U-15M)",
+      "group": "D",
+      "teams": [
+        "CV Cangas Onís",
+        "CV Collado Villalba",
+        "Manzanares Voley",
+        "CD Élite Voley B (INI)",
+        "Sporting CP (INI)",
+        "AMC Voleibol (INI-FC)"
+      ],
+      "matches": [
+        {
+          "id": 607,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "10:40",
+          "teamA": "CV Collado Villalba",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 22 - Lusoveno",
+          "cangas": true,
+          "venueKey": "LUSOVENO"
+        },
+        {
+          "id": 608,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "10:40",
+          "teamA": "Manzanares Voley",
+          "teamB": "Sporting CP (INI)",
+          "venue": "Campo 23 - Lusoveno",
+          "cangas": false,
+          "venueKey": "LUSOVENO"
+        },
+        {
+          "id": 609,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "",
+          "teamA": "CD Élite Voley B (INI)",
+          "teamB": "AMC Voleibol (INI-FC)",
+          "venue": "",
+          "cangas": false,
+          "venueKey": null
+        },
+        {
+          "id": 610,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "13:00",
+          "teamA": "CV Cangas Onís",
+          "teamB": "Manzanares Voley",
+          "venue": "Campo 22 - Lusoveno",
+          "cangas": true,
+          "venueKey": "LUSOVENO"
+        },
+        {
+          "id": 611,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "13:00",
+          "teamA": "Sporting CP (INI)",
+          "teamB": "CD Élite Voley B (INI)",
+          "venue": "Campo 23 - Lusoveno",
+          "cangas": false,
+          "venueKey": "LUSOVENO"
+        },
+        {
+          "id": 612,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "",
+          "teamA": "AMC Voleibol (INI-FC)",
+          "teamB": "CV Collado Villalba",
+          "venue": "",
+          "cangas": false,
+          "venueKey": null
+        },
+        {
+          "id": 613,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "17:10",
+          "teamA": "CD Élite Voley B (INI)",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 10 - Nave",
+          "cangas": true,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 614,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "",
+          "teamA": "AMC Voleibol (INI-FC)",
+          "teamB": "Sporting CP (INI)",
+          "venue": "",
+          "cangas": false,
+          "venueKey": null
+        },
+        {
+          "id": 615,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "18:20",
+          "teamA": "Manzanares Voley",
+          "teamB": "CV Collado Villalba",
+          "venue": "Campo 10 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 616,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "15:20",
+          "teamA": "CV Cangas Onís",
+          "teamB": "Sporting CP (INI)",
+          "venue": "Campo 14 - Anta",
+          "cangas": true,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 617,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "15:20",
+          "teamA": "CV Collado Villalba",
+          "teamB": "CD Élite Voley B (INI)",
+          "venue": "Campo 15 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 618,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "15:20",
+          "teamA": "Manzanares Voley",
+          "teamB": "AMC Voleibol (INI-FC)",
+          "venue": "Campo 16 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 619,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "17:40",
+          "teamA": "Sporting CP (INI)",
+          "teamB": "CV Collado Villalba",
+          "venue": "Campo 14 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 620,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "17:40",
+          "teamA": "CD Élite Voley B (INI)",
+          "teamB": "Manzanares Voley",
+          "venue": "Campo 15 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 621,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "17:40",
+          "teamA": "AMC Voleibol (INI-FC)",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 16 - Anta",
+          "cangas": true,
+          "venueKey": "ANTA"
+        }
+      ]
+    },
+    {
+      "id": "fem-ini-a",
+      "shortName": "Iniciado Fem. Div. A",
+      "fullName": "Iniciado Femenino División A (U-15W)",
+      "group": "B",
+      "teams": [
+        "Madeira Torres",
+        "AD Esposende",
+        "CE Levada",
+        "Filipa Lencastre",
+        "AD Fénix Loulé A",
+        "CV Cangas Onís"
+      ],
+      "matches": [
+        {
+          "id": 686,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "14:10",
+          "teamA": "AD Esposende",
+          "teamB": "Madeira Torres",
+          "venue": "Campo 14 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 687,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "14:10",
+          "teamA": "CE Levada",
+          "teamB": "AD Fénix Loulé A",
+          "venue": "Campo 15 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 688,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "14:10",
+          "teamA": "Filipa Lencastre",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 16 - Anta",
+          "cangas": true,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 689,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "16:30",
+          "teamA": "Madeira Torres",
+          "teamB": "CE Levada",
+          "venue": "Campo 14 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 690,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "16:30",
+          "teamA": "AD Fénix Loulé A",
+          "teamB": "Filipa Lencastre",
+          "venue": "Campo 15 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 691,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "16:30",
+          "teamA": "CV Cangas Onís",
+          "teamB": "AD Esposende",
+          "venue": "Campo 16 - Anta",
+          "cangas": true,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 692,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "18:50",
+          "teamA": "Filipa Lencastre",
+          "teamB": "Madeira Torres",
+          "venue": "Campo 14 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 693,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "18:50",
+          "teamA": "CV Cangas Onís",
+          "teamB": "AD Fénix Loulé A",
+          "venue": "Campo 15 - Anta",
+          "cangas": true,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 694,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "18:50",
+          "teamA": "CE Levada",
+          "teamB": "AD Esposende",
+          "venue": "Campo 16 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 695,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "9:00",
+          "teamA": "Madeira Torres",
+          "teamB": "AD Fénix Loulé A",
+          "venue": "Campo 8 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 696,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "10:10",
+          "teamA": "AD Esposende",
+          "teamB": "Filipa Lencastre",
+          "venue": "Campo 8 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 697,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "11:20",
+          "teamA": "CE Levada",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 8 - Nave",
+          "cangas": true,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 698,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "12:30",
+          "teamA": "AD Fénix Loulé A",
+          "teamB": "AD Esposende",
+          "venue": "Campo 8 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 699,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "13:40",
+          "teamA": "Filipa Lencastre",
+          "teamB": "CE Levada",
+          "venue": "Campo 8 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 700,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "14:50",
+          "teamA": "CV Cangas Onís",
+          "teamB": "Madeira Torres",
+          "venue": "Campo 8 - Nave",
+          "cangas": true,
+          "venueKey": "NAVE"
+        }
+      ]
+    },
+    {
+      "id": "fem-ini-b",
+      "shortName": "Iniciado Fem. Div. B",
+      "fullName": "Iniciado Femenino División B (U-15W)",
+      "group": "B",
+      "teams": [
+        "AD Fénix Loulé B",
+        "CR Piedense B",
+        "RC Vale Cavala B",
+        "Sporting CP D",
+        "Club Parla Voley C",
+        "CV Cangas Onís"
+      ],
+      "matches": [
+        {
+          "id": 923,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "16:00",
+          "teamA": "CR Piedense B",
+          "teamB": "AD Fénix Loulé B",
+          "venue": "Campo 12 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 924,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "17:10",
+          "teamA": "RC Vale Cavala B",
+          "teamB": "Club Parla Voley C",
+          "venue": "Campo 12 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 925,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "18:20",
+          "teamA": "Sporting CP D",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 12 - Nave",
+          "cangas": true,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 926,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "19:30",
+          "teamA": "AD Fénix Loulé B",
+          "teamB": "RC Vale Cavala B",
+          "venue": "Campo 12 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 927,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "20:40",
+          "teamA": "Club Parla Voley C",
+          "teamB": "Sporting CP D",
+          "venue": "Campo 12 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 928,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "21:50",
+          "teamA": "CV Cangas Onís",
+          "teamB": "CR Piedense B",
+          "venue": "Campo 12 - Nave",
+          "cangas": true,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 929,
+          "jor": 3,
+          "date": "2026-07-05",
+          "time": "9:30",
+          "teamA": "Sporting CP D",
+          "teamB": "AD Fénix Loulé B",
+          "venue": "Campo 17 - AAE",
+          "cangas": false,
+          "venueKey": "AAE"
+        },
+        {
+          "id": 930,
+          "jor": 3,
+          "date": "2026-07-05",
+          "time": "10:40",
+          "teamA": "CV Cangas Onís",
+          "teamB": "Club Parla Voley C",
+          "venue": "Campo 17 - AAE",
+          "cangas": true,
+          "venueKey": "AAE"
+        },
+        {
+          "id": 931,
+          "jor": 3,
+          "date": "2026-07-05",
+          "time": "11:50",
+          "teamA": "RC Vale Cavala B",
+          "teamB": "CR Piedense B",
+          "venue": "Campo 17 - AAE",
+          "cangas": false,
+          "venueKey": "AAE"
+        },
+        {
+          "id": 932,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "13:00",
+          "teamA": "AD Fénix Loulé B",
+          "teamB": "Club Parla Voley C",
+          "venue": "Campo 17 - AAE",
+          "cangas": false,
+          "venueKey": "AAE"
+        },
+        {
+          "id": 933,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "18:50",
+          "teamA": "CR Piedense B",
+          "teamB": "Sporting CP D",
+          "venue": "Campo 14 - Anta",
+          "cangas": false,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 934,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "20:00",
+          "teamA": "RC Vale Cavala B",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 14 - Anta",
+          "cangas": true,
+          "venueKey": "ANTA"
+        },
+        {
+          "id": 935,
+          "jor": 5,
+          "date": "2026-07-06",
+          "time": "13:10",
+          "teamA": "Club Parla Voley C",
+          "teamB": "CR Piedense B",
+          "venue": "Campo 64 - Es Carvalhos",
+          "cangas": false,
+          "venueKey": "ES_CARVALHOS"
+        },
+        {
+          "id": 936,
+          "jor": 5,
+          "date": "2026-07-06",
+          "time": "14:20",
+          "teamA": "Sporting CP D",
+          "teamB": "RC Vale Cavala B",
+          "venue": "Campo 64 - Es Carvalhos",
+          "cangas": false,
+          "venueKey": "ES_CARVALHOS"
+        },
+        {
+          "id": 937,
+          "jor": 5,
+          "date": "2026-07-06",
+          "time": "15:30",
+          "teamA": "CV Cangas Onís",
+          "teamB": "AD Fénix Loulé B",
+          "venue": "Campo 64 - Es Carvalhos",
+          "cangas": true,
+          "venueKey": "ES_CARVALHOS"
+        }
+      ]
+    },
+    {
+      "id": "fem-cad-a",
+      "shortName": "Cadete Fem. Div. A",
+      "fullName": "Cadete Femenino División A (U-16W)",
+      "group": "D",
+      "teams": [
+        "AV Setúbal",
+        "S.C. Espinho",
+        "FOX A",
+        "Boadilla M2 Mayo A",
+        "CV Cangas Onís",
+        "CV Cid Campeador"
+      ],
+      "matches": [
+        {
+          "id": 1059,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "15:30",
+          "teamA": "S.C. Espinho",
+          "teamB": "AV Setúbal",
+          "venue": "Campo 32 - EGC",
+          "cangas": false,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1060,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "15:30",
+          "teamA": "FOX A",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 33 - EGC (EXT)",
+          "cangas": true,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1061,
+          "jor": 1,
+          "date": "2026-07-04",
+          "time": "15:30",
+          "teamA": "Boadilla M2 Mayo A",
+          "teamB": "CV Cid Campeador",
+          "venue": "Campo 34 - EGC (EXT)",
+          "cangas": false,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1062,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "17:50",
+          "teamA": "AV Setúbal",
+          "teamB": "FOX A",
+          "venue": "Campo 32 - EGC",
+          "cangas": false,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1063,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "17:50",
+          "teamA": "CV Cangas Onís",
+          "teamB": "Boadilla M2 Mayo A",
+          "venue": "Campo 33 - EGC (EXT)",
+          "cangas": true,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1064,
+          "jor": 2,
+          "date": "2026-07-04",
+          "time": "17:50",
+          "teamA": "CV Cid Campeador",
+          "teamB": "S.C. Espinho",
+          "venue": "Campo 34 - EGC (EXT)",
+          "cangas": false,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1065,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "20:10",
+          "teamA": "Boadilla M2 Mayo A",
+          "teamB": "AV Setúbal",
+          "venue": "Campo 32 - EGC",
+          "cangas": false,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1066,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "20:10",
+          "teamA": "CV Cid Campeador",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 33 - EGC (EXT)",
+          "cangas": true,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1067,
+          "jor": 3,
+          "date": "2026-07-04",
+          "time": "20:10",
+          "teamA": "FOX A",
+          "teamB": "S.C. Espinho",
+          "venue": "Campo 34 - EGC (EXT)",
+          "cangas": false,
+          "venueKey": "EGC"
+        },
+        {
+          "id": 1068,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "9:00",
+          "teamA": "AV Setúbal",
+          "teamB": "CV Cangas Onís",
+          "venue": "Campo 13 - Nave",
+          "cangas": true,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 1069,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "10:10",
+          "teamA": "S.C. Espinho",
+          "teamB": "Boadilla M2 Mayo A",
+          "venue": "Campo 13 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 1070,
+          "jor": 4,
+          "date": "2026-07-05",
+          "time": "11:20",
+          "teamA": "FOX A",
+          "teamB": "CV Cid Campeador",
+          "venue": "Campo 13 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 1071,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "12:30",
+          "teamA": "CV Cangas Onís",
+          "teamB": "S.C. Espinho",
+          "venue": "Campo 13 - Nave",
+          "cangas": true,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 1072,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "13:40",
+          "teamA": "Boadilla M2 Mayo A",
+          "teamB": "FOX A",
+          "venue": "Campo 13 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        },
+        {
+          "id": 1073,
+          "jor": 5,
+          "date": "2026-07-05",
+          "time": "14:50",
+          "teamA": "CV Cid Campeador",
+          "teamB": "AV Setúbal",
+          "venue": "Campo 13 - Nave",
+          "cangas": false,
+          "venueKey": "NAVE"
+        }
+      ]
+    }
+  ]
+}
